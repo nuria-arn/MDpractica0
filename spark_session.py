@@ -1,5 +1,6 @@
 from pyspark.sql import SparkSession
 from pyspark.sql.functions import *
 from pyspark.sql.types import *
+from pyspark.sql.window import *
 
-spark = SparkSession.builder.getOrCreate()
+spark_session = (SparkSession.builder.appName("IBEX35").getOrCreate())
