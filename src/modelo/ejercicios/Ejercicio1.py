@@ -1,4 +1,3 @@
-from pyspark.sql import SparkSession
 from pyspark.sql.functions import *
 from pyspark.sql.types import *
 from pyspark.sql.window import *
@@ -26,26 +25,27 @@ def ejercicio_1b(df):
             df = df.withColumnRenamed(i, i[:-3])
 
     df.show(6)
+    return df
 
 # Ej1-c Definir StructType para cargar el tipo correcto de cada columna
 # Sustituir nombre tickers por nombre/siglas empresa
 
-tickers = {
-    "IBE": "Iberdrola",
-    "REP": "Repsol",
-    "NTGY": "Naturgy",
-    "SAN": "Santander",
-    "BBVA": "BBVA",
-    "CABK": "CaixaBank",
-    "BKT": "Bankinter",
-    "SAB": "Sabadell",
-    "UNI": "Unicaja",
-    "TEF": "Telefonica",
-    "ITX": "Inditex",
-    "IDR": "Indra"
-}
+def ejercicio_1c(df, spark_session):
+    tickers = {
+        "IBE": "Iberdrola",
+        "REP": "Repsol",
+        "NTGY": "Naturgy",
+        "SAN": "Santander",
+        "BBVA": "BBVA",
+        "CABK": "CaixaBank",
+        "BKT": "Bankinter",
+        "SAB": "Sabadell",
+        "UNI": "Unicaja",
+        "TEF": "Telefonica",
+        "ITX": "Inditex",
+        "IDR": "Indra"
+    }
 
-def ejercicio_1c(df, tickers, spark_session):
     for i in df.columns:
         if i in tickers:
             df = df.withColumnRenamed(i, tickers[i])
@@ -64,4 +64,4 @@ def ejercicio_1c(df, tickers, spark_session):
     df_schema.printSchema()
     df_schema.show(6)
 
-    return df_schema
+    return df
