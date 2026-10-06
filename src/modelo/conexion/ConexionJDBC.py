@@ -5,7 +5,7 @@ class ConexionJDBC:
         self.propiedades = {
             "driver": "com.mysql.cj.jdbc.Driver",
             "user": "root",
-            "password": "****"
+            "password": "olacaracola"
         }
 
     def guardar_dataframe(self, data_frame, tabla, modo="overwrite"):

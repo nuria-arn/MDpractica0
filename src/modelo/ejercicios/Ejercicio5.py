@@ -32,3 +32,5 @@ def ejercicio5(df):
         "BBVA",
         "BBVACuartil"
     ).show()
+
+    return df

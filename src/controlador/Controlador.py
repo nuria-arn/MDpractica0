@@ -3,10 +3,15 @@ from src.modelo.ejercicios.Ejercicio2 import *
 from src.modelo.ejercicios.Ejercicio3 import *
 from src.modelo.ejercicios.Ejercicio4 import *
 from src.modelo.ejercicios.Ejercicio5 import *
+
 from src.modelo.conexion.SparkSession import *
+from src.modelo.conexion.ConexionJDBC import *
 
 def ejecutar():
     df, spark_session = crear_sesion()
+    conexion = ConexionJDBC()
+
+    conexion.guardar_dataframe(df, "Datos2024", "overwrite")
 
     # Ejercicio 1a
     df = ejercicio_1a(df)
@@ -28,4 +33,10 @@ def ejecutar():
     ejercicio4(df)
 
     df = ejercicio5(df)
+
+    conexion.guardar_dataframe(
+        df,
+        "Datos2024Tratados",
+        "overwrite"
+    )
 
